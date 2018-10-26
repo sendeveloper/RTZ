@@ -220,12 +220,16 @@ body, p, h1, h2, h3, h4, h5, h6{
 .right-body .contents {
   list-style: none;
   opacity: 0;
+  overflow: hidden;
+  padding: 0;
   position: relative;
 }
 .contents .each{
   color: #faf7fb;
   font-family: 'suisse_intl';
   margin-bottom: 40px;
+  transition: transform 2s cubic-bezier(0,0.01,0.1,1), color 0.4s;
+  transform-origin: left;
 }
 .contents .each:last-child {
   margin-bottom: 0px;

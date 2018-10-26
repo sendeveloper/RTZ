@@ -47,6 +47,7 @@ $(document).ready(function () {
 
     var left_text_top = title_top - 100;
     $(".left-body-text, .search-container, .contents").css('top', left_text_top);
+    $('.contents').css('perspective', $('.contents').height()/2);
     POS = [title, left_text, left_search, right_content];
   }
   function getPos(el) {
@@ -99,5 +100,15 @@ $(document).ready(function () {
     var val = pos;
     if (pos < top) val = top;
     if (pos > bottom) val = bottom;
+    var startAngle = (val - top) / (bottom-top) * 30, len, step;
+    // len = $('.contents li').length;
+    // if (len > 0)
+    //   step = 180/len;
+    console.log(startAngle);
+    step = 20;
+    $('.contents li').each(function(index, item){
+      var angle = step*index - startAngle;
+      $(item).css('transform', 'rotateY(' + angle + 'deg)');
+    });
   }
 })
