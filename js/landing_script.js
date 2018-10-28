@@ -126,6 +126,10 @@ $(document).ready(function () {
     if (pos < top) val = top;
     if (pos > bottom) val = bottom;
     var opacity = (val - top) / (bottom - top) * 0.9 + 0.0;
+    if (pos >= TP[1])
+      $('.search-container').css('display', 'block');
+    else
+      $('.search-container').css('display', 'none');
     $('.left-body-text, .search-container, .contents').css('opacity', opacity);
     $('.left-body-text, .search-container, .contents').css('transform', 'translateY(' + pos + 'px)');
   }
@@ -140,6 +144,52 @@ $(document).ready(function () {
       var opacity = 1-Math.abs(angle)/90;
       $(item).css('transform', 'rotateY(' + angle + 'deg)');
       $(item).css('opacity', opacity);
+      if (pos >= TP[1])
+        $(item).find('a').css('cursor', 'pointer');
+      else
+        $(item).find('a').css('cursor', 'initial');
     });
   }
+  $('.contents li a').on('click', function(e) {
+    e.preventDefault();
+    var pos = $('.background').scrollTop();
+    if (pos >= TP[1]) {
+      var wid = $(document).width();
+      var hei = $(document).height();
+      var $this = $(this);
+      var current = $(this).find('h5');
+      var curFont, pos, objWid, top, curHeight;
+      $(this).parent().css('transform', 'initial');
+      $(this).parent().css('transition', 'initial');
+      curFont = parseFloat(current.css('font-size'));
+      curHeight = parseFloat(current.css('line-height'));
+      pos = current.offset().left;
+      top = current.offset().top;
+      $('body').find('.clone-h5').remove();
+      var obj = $('<h5 class="clone-h5">' + current.html() + '</h5>');
+      obj.appendTo('body');
+      obj.css('position', 'absolute');
+      obj.css('color', '#faf7fb');
+      obj.css('width', current.width() + 'px');
+      obj.css('font-size', curFont + 'px');
+      obj.css('line-height', curHeight + 'px');
+      obj.css('left', pos + 'px');
+      obj.css('text-align', 'center');
+      obj.css('top', top + 'px');
+      objWid = ((1000 > wid) ? wid : 1000);
+      var movLeft = (wid - objWid)/2;
+      var movTop = (hei - obj.height())/2 - 30;
+
+      obj.animate({
+        fontSize: (curFont*2) + 'px',
+        lineHeight: (curHeight*2) + 'px',
+        left: movLeft + 'px',
+        top: movTop + 'px',
+        width: objWid + 'px',
+      }, 500, function() {
+        document.location.href = $this.attr('href');
+        // Animation complete.
+      });
+    }
+  })
 })
