@@ -122,15 +122,22 @@ body, p, h1, h2, h3, h4, h5, h6{
   .icon-chevron-down:before {content: "\e905";}
   .icon-chevron-up:before {content: "\e904";}
 
-.background {
+.blog-landing .background {
   background: url('../img/bg-blog-landing.jpg') no-repeat;
   background-size: cover;
   height: 100vh;
   overflow-y: scroll;
 }
+.blog-post .blog-background {
+  background: url('../img/bg-blog-post.jpg') no-repeat;
+  background-size: 100%;
+}
 .container {
   padding: 28px 30px;
   height: 1500px;
+}
+.blog-container {
+  padding: 28px 30px;
 }
 
 .header {
@@ -270,7 +277,7 @@ body, p, h1, h2, h3, h4, h5, h6{
 .socials {
   bottom: 16px;
   margin: 0;
-  right: 30px;
+  right: 50px;
   padding: 0;
   position: fixed;
   z-index: 1010;
@@ -288,6 +295,193 @@ ul.list-social>li>a {
   font-size: 18px;
   text-align: center;
   text-decoration: none;
+}
+.blog-post .footer .scroll-info{
+  color: #836287;
+}
+.blog-post .footer .scroll-info:after{
+  background-color: #836287;
+}
+.blog-post ul.list-social>li>a{
+  color: #836287;
+}
+.share-social {
+  align-items: center;
+  display: flex;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+.share-social li {
+  font-size: 18px;
+  margin-right: 10px;
+}
+.share-social li a {
+  text-decoration: none;
+}
+
+.blog-made {
+  color: #150e54;
+  font-family: 'suisse_intl';
+  font-size: 15pt;
+  line-height: 30pt;
+  position: relative;
+  top: -100px;
+  text-align: center;
+}
+.made-by {
+  padding-left: 8px;
+}
+.made-by span {
+  color: #ad2873;
+}
+.blog-date{
+  color: #150e54;
+  font-family: 'suisse_intl';
+  font-size: 12pt;
+  line-height: 22.5pt;
+  padding: 0 18px;
+}
+.blog-title {
+  color: #ba3681;
+  font-family: 'suisse_intl';
+  font-size: 63.75pt;
+  line-height: 67.5pt;
+  padding: 0 18px;
+}
+.normal1 {
+  color: #150e54;
+  font-family: 'suisse_intl';
+  font-size: 17.25pt;
+  line-height: 30pt;
+  padding: 0 18px;
+}
+.normal2 {
+  color: #150e54;
+  font-family: 'suisse_intl';
+  font-size: 15pt;
+  line-height: 30pt;
+  padding: 0 18px;
+}
+.normal3 {
+  color: #150e54;
+  font-family: 'suisse_intl';
+  font-size: 13.5pt;
+  line-height: 21pt;
+  padding: 0 18px;
+}
+.subtitle1 {
+  color: #ba3681;
+  font-family: 'suisse_intl';
+  font-size: 31.5pt;
+  line-height: 31.5pt;
+  padding: 0 18px;
+}
+.normal-ul {
+  color: #140c53;
+  font-family: 'suisse_intl';
+  font-size: 13.5pt;
+  line-height: 46.5pt;
+  padding: 0 18px;
+}
+.subtitle2 {
+  color: #ba3681;
+  font-family: 'suisse_intl';
+  font-size: 51pt;
+  line-height: 63.75pt;
+  padding: 0 18px;
+}
+.share {
+  display: flex;
+  padding: 0 18px;
+}
+.share span{
+  color: #ba3681;
+  font-family: 'suisse_intl';
+  font-size: 11.25pt;
+  line-height: 30pt;
+  padding-right: 18px;
+}
+.subtitle3 {
+  color: #ba3681;
+  font-family: 'suisse_intl';
+  font-size: 21pt;
+  line-height: 31.5pt;
+  padding: 0 18px;
+  text-align: center;
+}
+.send-input-container {
+  width: 335px;
+}
+.next-post {
+  color: #ba3681;
+  font-family: 'suisse_intl';
+  font-size: 19.5pt;
+  line-height: 31.5pt;
+  padding: 0 18px;
+}
+.next-title {
+  color: #140c53;
+  font-family: 'suisse_intl';
+  font-size: 49.65pt;
+  line-height: 52.57pt;
+  padding: 0 18px;
+}
+.blog-main {
+  width: 820px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+.img-container {
+  position: relative;
+}
+.img-container .progressbar {
+  background: url('../img/progress.png');
+  background-size: 820px 5px;
+  background-repeat: no-repeat;
+  height: 5px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.img-container img {
+  width: 100%;
+}
+.margin35 {
+  margin-bottom: 35px;
+}
+.margin45 {
+  margin-bottom: 45px;
+}
+.margin50 {
+  margin-bottom: 50px;
+}
+.margin55 {
+  margin-bottom: 55px;
+}
+.margin60 {
+  margin-bottom: 60px;
+}
+.margin65 {
+  margin-bottom: 65px;
+}
+.margin70 {
+  margin-bottom: 70px;
+}
+.margin80 {
+  margin-bottom: 80px;
+}
+.margin95 {
+  margin-bottom: 95px;
+}
+.margin100 {
+  margin-bottom: 100px;
+}
+.margin110 {
+  margin-bottom: 110px;
+}
+.margin160 {
+  margin-bottom: 160px;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -346,7 +540,7 @@ ul.list-social>li>a {
     flex-direction: column;
   }
   .socials {
-    display: none;
+    /*display: none;*/
   }
   .title {
     font-size: 34.29pt;

@@ -1,7 +1,19 @@
 $(document).ready(function () {
   var entireHeight;
+  var originalPos = [];
   var TP = [], POS = [];
   var viewWidth, viewHeight;
+
+  getOriginalPos();
+  init();
+
+  function getOriginalPos() {
+    title = getPos($('.title'));
+    left_text = getPos($('.left-body-text'));
+    left_search = getPos($('.left-body-search'));
+    right_content = getPos($('.contents'));
+    originalPos = [title, left_text, left_search, right_content];
+  }
   function calcEntireHeight() {
     viewWidth = $(window).width();
     viewHeight = $(document).height();
@@ -14,54 +26,75 @@ $(document).ready(function () {
     }
     else
     {
-      entireHeight = 2000;
+      entireHeight = 3000;
       TP[0] = 0;
-      TP[1] = 200;
-      TP[2] = 400;
+      TP[1] = 400;
+      TP[2] = 800;
       TP[3] = entireHeight - viewHeight;
     }
     $('.container').css('height', entireHeight);
   }
-
-  init();
+  function setSVGColor() {
+    document.getElementById("svg1").addEventListener("load", function() {
+      var doc = this.getSVGDocument();
+      var rect = doc.querySelectorAll("path"); // suppose our image contains a <rect>
+      $(rect).attr('fill', '#FFF');
+    });
+    document.getElementById("svg2").addEventListener("load", function() {
+      var doc = this.getSVGDocument();
+      var rect1 = doc.querySelectorAll("path");
+      $(rect1).attr('fill', '#FFF');
+    });
+  }
   function init() {
+    setSVGColor();
     calcEntireHeight();
     setLayouts();
-    console.log(TP, POS);
+
+    var fontSize = parseFloat($('.title').css('fontSize')) / 10;
+    $('.title').css('opacity', 0.1).css('fontSize', fontSize + 'px');
+    $( '.title' ).animate({
+      opacity: 1,
+      fontSize: fontSize*10 + 'px'
+    }, 1000, function() {
+      // Animation complete.
+    });
   }
   function setLayouts() {
     var hei, wid;
     var title, left_text, left_search, right_content;
     hei = $(document).height();
     wid = $(document).width();
-    title = getPos($('.title'));
-    left_text = getPos($('.left-body-text'));
-    left_search = getPos($('.left-body-search'));
-    right_content = getPos($('.contents'));
     
+    title = [originalPos[0][0], originalPos[0][1]];
     var title_top = (hei/2 - $('.title').height()/2 - title[0]);
-    $('.title').css('top', title_top);
-
     title[0] += title_top;
     title[1] = $('.title').width();
 
+    $('.title').css('top', title_top);
+
     var left_text_top = title_top - 100;
     $(".left-body-text, .search-container, .contents").css('top', left_text_top);
-    $('.contents').css('perspective', $('.contents').height()/2);
     POS = [title, left_text, left_search, right_content];
   }
   function getPos(el) {
     var obj = [el.offset().top - $(window).scrollTop(), el.offset().left];
     return obj;
-}
-  $(window).resize(function(event) {
-    calcEntireHeight();
-  })
-  $('.background').scroll(function (event) {
+  }
+  function updateObjects() {
     var pos = $('.background').scrollTop();
     setTitleZoom(pos, TP[1], TP[0]);
     setLeftOpacity(pos, TP[2], TP[1]);
     setRightScroll(pos, TP[3], TP[2]);
+  }
+  $(window).resize(function(event) {
+    calcEntireHeight();
+    setLayouts();
+    $('.title').css('opacity', 1).css('fontSize', '');
+    updateObjects();
+  })
+  $('.background').scroll(function (event) {
+    updateObjects();
   });
   function setTitleZoom(pos, bottom, top) {
     var diff = (pos - top);
@@ -100,15 +133,13 @@ $(document).ready(function () {
     var val = pos;
     if (pos < top) val = top;
     if (pos > bottom) val = bottom;
-    var startAngle = (val - top) / (bottom-top) * 30, len, step;
-    // len = $('.contents li').length;
-    // if (len > 0)
-    //   step = 180/len;
-    console.log(startAngle);
-    step = 20;
+    var startAngle = (val - top) / (bottom-top) * 70, len, step;
+    step = 35;
     $('.contents li').each(function(index, item){
       var angle = step*index - startAngle;
+      var opacity = 1-Math.abs(angle)/90;
       $(item).css('transform', 'rotateY(' + angle + 'deg)');
+      $(item).css('opacity', opacity);
     });
   }
 })
