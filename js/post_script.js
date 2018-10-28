@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  init();
   function setSVGColor() {
     document.getElementById("svg1").addEventListener("load", function() {
       var doc = this.getSVGDocument();
