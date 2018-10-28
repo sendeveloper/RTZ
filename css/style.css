@@ -83,17 +83,29 @@ body, p, h1, h2, h3, h4, h5, h6{
   margin: 0;
   padding: 0;
 }
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+.search-container input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #faf7fb;
 }
-::-moz-placeholder { /* Firefox 19+ */
+.search-container input::-moz-placeholder { /* Firefox 19+ */
   color: #faf7fb;
 }
-:-ms-input-placeholder { /* IE 10+ */
+.search-container input:-ms-input-placeholder { /* IE 10+ */
   color: #faf7fb;
 }
-:-moz-placeholder { /* Firefox 18- */
+.search-container input:-moz-placeholder { /* Firefox 18- */
   color: #faf7fb;
+}
+.send-input-container input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #140c53;
+}
+.send-input-container input::-moz-placeholder { /* Firefox 19+ */
+  color: #140c53;
+}
+.send-input-container input:-ms-input-placeholder { /* IE 10+ */
+  color: #140c53;
+}
+.send-input-container input:-moz-placeholder { /* Firefox 18- */
+  color: #140c53;
 }
 
 @font-face {
@@ -374,6 +386,7 @@ ul.list-social>li>a {
   color: #ba3681;
   font-family: 'suisse_intl';
   font-size: 31.5pt;
+  font-weight: 600;
   line-height: 31.5pt;
   padding: 0 18px;
 }
@@ -388,6 +401,7 @@ ul.list-social>li>a {
   color: #ba3681;
   font-family: 'suisse_intl';
   font-size: 51pt;
+  font-weight: 600;
   line-height: 63.75pt;
   padding: 0 18px;
 }
@@ -399,6 +413,7 @@ ul.list-social>li>a {
   color: #ba3681;
   font-family: 'suisse_intl';
   font-size: 11.25pt;
+  font-weight: 600;
   line-height: 30pt;
   padding-right: 18px;
 }
@@ -406,26 +421,56 @@ ul.list-social>li>a {
   color: #ba3681;
   font-family: 'suisse_intl';
   font-size: 21pt;
+  font-weight: 600;
   line-height: 31.5pt;
   padding: 0 18px;
   text-align: center;
 }
 .send-input-container {
+  border-bottom: 1px solid #ba3681;
+  display: flex;
+  margin: 0 auto;
   width: 335px;
+}
+.send-input-container input {
+  border: none;
+  font-size: 16px;
+  line-height: 32px;
+  outline: none;
+  padding: 0 10px;
+  width: 280px;
+}
+.send-input-container button {
+  background: transparent;
+  border: none;
+  color: #ba3681;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 40px;
+  outline: none;
+  text-transform: uppercase;
 }
 .next-post {
   color: #ba3681;
+  display: block;
   font-family: 'suisse_intl';
   font-size: 19.5pt;
+  font-weight: 600;
+  margin: 0 auto;
   line-height: 31.5pt;
   padding: 0 18px;
+  text-align: center;
+  text-decoration: none;
 }
 .next-title {
   color: #140c53;
   font-family: 'suisse_intl';
   font-size: 49.65pt;
   line-height: 52.57pt;
+  max-width: 600px;
+  margin: 0 auto;
   padding: 0 18px;
+  text-align: center;
 }
 .blog-main {
   width: 820px;
