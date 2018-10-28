@@ -489,6 +489,7 @@ ul.list-social>li>a {
 }
 .next-title {
   color: #140c53;
+  display: block;
   font-family: 'suisse_intl';
   font-size: 49.65pt;
   line-height: 52.57pt;
@@ -496,6 +497,9 @@ ul.list-social>li>a {
   margin: 0 auto;
   padding: 0 18px;
   text-align: center;
+}
+a.next-title{
+  text-decoration: none;
 }
 .blog-main {
   width: 820px;

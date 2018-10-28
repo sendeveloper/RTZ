@@ -1,32 +1,4 @@
 $(document).ready(function () {
-  var entireHeight;
-  var originalPos = [];
-  var TP = [], POS = [];
-  var viewWidth, viewHeight;
-
-  getOriginalPos();
-  init();
-
-  function calcEntireHeight() {
-    viewWidth = $(window).width();
-    viewHeight = $(document).height();
-    if (viewWidth < 600) {
-      entireHeight = 3500;
-      TP[0] = 0;
-      TP[1] = 800;
-      TP[2] = 1200;
-      TP[3] = entireHeight - viewHeight;  
-    }
-    else
-    {
-      entireHeight = 3000;
-      TP[0] = 0;
-      TP[1] = 400;
-      TP[2] = 800;
-      TP[3] = entireHeight - viewHeight;
-    }
-    $('.container').css('height', entireHeight);
-  }
   function setSVGColor() {
     document.getElementById("svg1").addEventListener("load", function() {
       var doc = this.getSVGDocument();
@@ -39,31 +11,17 @@ $(document).ready(function () {
       $(rect1).attr('fill', '#716b97');
     });
   }
-  function getOriginalPos() {
-
-  }
   function init() {
     setSVGColor();
-    calcEntireHeight();
-    setLayouts();
-
   }
-  function setLayouts() {
-    
-  }
-  function getPos(el) {
-    var obj = [el.offset().top - $(window).scrollTop(), el.offset().left];
-    return obj;
-  }
-  function updateObjects() {
-    var pos = $('.background').scrollTop();
-    // setTitleZoom(pos, TP[1], TP[0]);
-    // setLeftOpacity(pos, TP[2], TP[1]);
-    // setRightScroll(pos, TP[3], TP[2]);
-  }
-  $(window).resize(function(event) {
-    calcEntireHeight();
-    setLayouts();
-    updateObjects();
+  $('.next-post, .next-title').on('click', function(e) {
+    var title;
+    e.preventDefault();
+    title = $('.next-title').html();
+    $('.blog-title').html($('.next-title').html());
+    $("html, body").animate({ scrollTop: 0 }, "fast");
+    $('.next-title').html(title);
+    $('.normal1-1').html("In the majority of cases, a business starts with a good idea and a basic action plan. As it progresses forward and gains traction, the day to day management can often take over pretty quickly. Let’s face it – addressing the daily demands of your business is daunting enough. Starting small and with limited resources, MDs often end up carrying the lion’s share of the responsibility and workload - representing the business, promoting it, driving sales, networking, marketing, motivating and managing the team. There are rarely enough hours in the day to cover every challenge that needs tackling. Therefore, the last thing any entrepreneur wants to hear from a mentor/investor is ‘Do you have a strategy, and more importantly, do you actually use it to govern your business activity?’.");
+    $('.img-container img').attr('src', 'img/img2.jpg');
   })
 })

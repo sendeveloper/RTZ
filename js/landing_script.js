@@ -168,14 +168,14 @@ $(document).ready(function () {
       $('body').find('.clone-h5').remove();
       var obj = $('<h5 class="clone-h5">' + current.html() + '</h5>');
       obj.appendTo('body');
-      obj.css('position', 'absolute');
       obj.css('color', '#faf7fb');
-      obj.css('width', current.width() + 'px');
       obj.css('font-size', curFont + 'px');
       obj.css('line-height', curHeight + 'px');
       obj.css('left', pos + 'px');
+      obj.css('position', 'absolute');
       obj.css('text-align', 'center');
       obj.css('top', top + 'px');
+      obj.css('width', current.width() + 'px');
       objWid = ((1000 > wid) ? wid : 1000);
       var movLeft = (wid - objWid)/2;
       var movTop = (hei - obj.height())/2 - 30;
